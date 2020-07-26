@@ -12,10 +12,16 @@ def play_tic_tac_toe():
         print(f'Player {player} turn.')
         player, board = take_turn(player, board)
         print_board(board)
+        
         winner = check_winner(board)
-
         if winner != '':
             print(f'{winner} wins!')
+            print('')
+            playing = False
+
+        tie = check_tie(board)
+        if tie:
+            print('Tie Game!')
             print('')
             playing = False
 
@@ -117,6 +123,14 @@ def check_winner(board):
         pass
 
     return winner
+
+def check_tie(board):
+    tie = False
+    if board[0][0] != '' and board[0][1] != '' and board[0][2] != '' \
+    and board[1][0] != '' and board[1][1] != '' and board[1][2] != '' \
+    and board[2][0] != '' and board[2][1] != '' and board[2][2] != '':
+        tie = True
+    return tie
 
 
 play_tic_tac_toe()
